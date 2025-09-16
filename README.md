@@ -117,10 +117,52 @@ We also have to connect Database information. This is why we created the `ostick
 <br>
 We can now complete our osTicket installation! 
 <img width="831" height="653" alt="tWaG5kf" src="https://github.com/user-attachments/assets/936a709b-edce-482f-8dc6-9fcc32034842" />
-<br>
+
 osTicket recommends that we change the write permissions for our `ost-config.php` file for least privilege and best practice, so I accomplished it with PowerShell. 
 `icacls` is a command that lets us modify the DACLs (Discretionary Access Control List) for files. I point it to our `ost-config.php` directory and run it. 
+(Another simple alternative is right-clicking on the file, selecting Properties, and setting it to Read-Only.) 
  
 <img width="983" height="211" alt="ff4iIIT" src="https://github.com/user-attachments/assets/106ba0d8-e44f-4813-a9ad-baa958e8cb46" />
 
+FOr additional best practices, I also delete our `/setup` directory, recommended by osTicket. 
 
+### Exploring osTicket- Managing/Creating Users, Ticket Management
+We've now installed osTicket! The account that we created was an Admin account, so we can log in via the Staff Control Panel url, `http://localhost/osticket/upload/scp`.
+<img width="1912" height="1002" alt="e9946034-cddf-4f92-86b8-cefa6bf7c22f" src="https://github.com/user-attachments/assets/ce805bf5-c2b5-4b65-b62e-8ef21fec5c53" />
+
+<img width="1897" height="999" alt="KMGfcPW" src="https://github.com/user-attachments/assets/def414ad-5798-4829-a242-6e2423c67399" />
+
+As Admin in our Admin Panel view, our account has access to the whole scope of our osTicket settings, and since our account is also an agent, we have an Agent Panel view.
+We can execute tasks like working available tickets, managing users, password lockouts, setting SLAs, etc. 
+
+For example, I created support Agents with varying levels of permissions- from full Admin access to limited viewing of only assigned tickets. I was also able to create
+Departments and set them to specific Departments: 
+
+<img width="1053" height="453" alt="SZm6QXe" src="https://github.com/user-attachments/assets/db5324b5-b1d6-4592-9d76-55af367b9a12" />
+
+
+For example, using our Admin account, I created mock users, and submitted a ticket through their user account. 
+<img width="960" height="506" alt="FiMisR6" src="https://github.com/user-attachments/assets/3a4d6096-b0cf-4c91-a45a-72eb296c1f58" />
+
+(I found that password resets can be automated through osTicket's provided templates! Allowing users to reset passwords themselves for osTicket) 
+
+I was also able to access our osTicket system through other clients (ex., my Host PC) and submit tickets there, logging in as a created user. 
+I created sample tickets, assigning them to different Support Agents and setting appropriate priorities, and replying to users. 
+
+ <img width="990" height="737" alt="EgjM9ob" src="https://github.com/user-attachments/assets/ce2109e9-68ed-4393-be91-ff96fd978cc1" />
+
+An example ticket that was opened, troubleshot, verified the fix, and subsequently closed: 
+
+<img width="771" height="830" alt="ZWxR4Ku" src="https://github.com/user-attachments/assets/da4e4255-077d-4f2e-bf4b-5ed5b3f84307" />
+
+### Testing Firewall rules
+To test our basic firewall inbound rules, I checked if we were able to access osTicket, running in our Azure VM,  from the outside- via HTTP that we opened on port 80. 
+
+<img width="1573" height="1038" alt="RRCUynR" src="https://github.com/user-attachments/assets/4078e2b3-854b-4252-8ac6-24739eb4769d" />
+
+And we were. All tickets were created from an outside IP address, connecting to our osTicket page via the Azure VM's public IP.
+I also verified the RDP Access rule by successfully RDP'ing to the VM from my IP address, ensuring traffic is restricted to it. 
+
+## Lessons Learned
+
+In conclusion, I was able to deploy a self-hosted osTicket 
