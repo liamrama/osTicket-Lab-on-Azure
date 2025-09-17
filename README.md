@@ -175,4 +175,3 @@ in ticket creation and management, User communication, assigning tickets and set
 ticketing systems, I understand that these aspects are universal to ALL helpdesk ticketing systems. Being able to troubleshoot and play with the environment granted me 
 invaluable insight that I can translate into other systems like Jira or ServiceNow. 
 
-
