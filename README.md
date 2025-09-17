@@ -165,4 +165,14 @@ I also verified the RDP Access rule by successfully RDP'ing to the VM from my IP
 
 ## Lessons Learned
 
-In conclusion, I was able to deploy a self-hosted osTicket 
+In conclusion, I was able to deploy a self-hosted osTicket environment using XAMPP (Apache/MySQL), running on a Windows Server VM via Microsoft Azure. 
+This project deepened my understanding of a real-world ticketing system setup, web application hosting, and deploying (and securing) a helpdesk system in the cloud. It gave me a jumping off point for learning
+Azure's cloud environment- I learned how to provision a cloud-based VM, manage a resource group and configure its firewall rules via Network Security Groups (NSGs), 
+letting me implement least privilege by restricting open ports to only the essentials (HTTP(s), RDP), and configuring traffic (allowed IP addresses for RDP). 
+I also learned- at a high level overview- configuring web servers and databases, and troubleshoot dependency issues, permissions, and networking network hardening. 
+By far, the most valuable addition to my knowledgebase was exploring the osTicket environment. I managed Agent accounts, created Users and gained hands-on experience 
+in ticket creation and management, User communication, assigning tickets and setting priorities, SLAs, with real-world mock ticket examples. Although there are many different 
+ticketing systems, I understand that these aspects are universal to ALL helpdesk ticketing systems. Being able to troubleshoot and play with the environment granted me 
+invaluable insight that I can translate into other systems like Jira or ServiceNow. 
+
+
